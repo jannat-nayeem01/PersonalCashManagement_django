@@ -6,6 +6,9 @@ from .models import *
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
 
+from rest_framework import viewsets,permissions
+from .serializers import ExpenseSerializer
+
 
 def registration(request):
     if(request.method == 'POST'):
@@ -33,16 +36,14 @@ def loginview(request):
     form = LoginForm()
     return render(request,'login.html',{'form':form})
 
+def logoutview(request):
+    user = request.user
+    logout(request,user)
+    return redirect('Logged Out Successfully')
+
 @login_required
 def profile(request):
     return render(request,'profile.html',{'user':request.user})
-
-
-
-from django.db.models import Sum
-from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-from django.shortcuts import render, redirect
 
 
 @login_required
@@ -113,4 +114,6 @@ def dashboard(request):
 
 
     return render(request,'dashboard.html',context=context)
-    
+
+# Using djangoRestFramework- Serializer
+class ExpenseViewSet(v)
