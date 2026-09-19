@@ -6,8 +6,6 @@ from .models import *
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
 
-from rest_framework import viewsets,permissions
-from .serializers import ExpenseSerializer
 
 
 def registration(request):
@@ -115,5 +113,3 @@ def dashboard(request):
 
     return render(request,'dashboard.html',context=context)
 
-# Using djangoRestFramework- Serializer
-class ExpenseViewSet(v)
